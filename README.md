@@ -4,15 +4,6 @@ https://github.com/user-attachments/assets/6b88fef7-a4ef-4ddf-a2fc-a5b98507d53f
 
 🛸 Autonomous Aerial Robot: YOLO-Powered Gate Navigation
 
-<p align="center">
-  <video src="Media/tello_yolo_flight_20260420_164125.mp4" width="100%" controls autoplay loop muted>
-    Your browser does not support the video tag.
-  </video>
-  <br>
-  <i><b>Autonomous Aerial Robot:</b> Fully autonomous gate navigation using YOLOv8 and PID control (45-second run).</i>
-</p>
-
----
 
 An elite, high-speed autonomous drone mission. The system uses a DJI Tello drone controlled via ROS 2 Humble, utilizing a custom-trained YOLO model for object detection and a refined Finite State Machine (FSM) with PID control for navigation.
 
