@@ -1,7 +1,7 @@
 🛸 Autonomous Aerial Robot: YOLO-Powered Gate Navigation
 
 <p align="center">
-  <video src="Media/tello_run.mp4" width="100%" controls autoplay loop muted>
+  <video src="Media/tello_yolo_flight_20260420_164125.mp4" width="100%" controls autoplay loop muted>
     Your browser does not support the video tag.
   </video>
   <br>
