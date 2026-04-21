@@ -108,3 +108,33 @@ Key Features:
 
 
 Developed for the Aerial Robotics and Multi-Robot Systems Course, Spring 2026.
+
+
+
+
+ros2_ws folder tree
+
+my_tello_vision/
+├── description/
+│   └── urdf/
+│       └── tello.urdf          # Robot description for simulation
+├── launch/
+│   └── sim_launch.py           # Launch file for ROS 2 nodes
+├── models/
+│   └── best.pt                 # Custom YOLOv8 trained model
+├── my_tello_vision/            # Core source code
+│   ├── calibrate.py            # Camera-to-Gate offset calibration tool
+│   ├── record_tello.py         # Flight recording script with YOLO overlays
+│   ├── save_images.py          # Dataset collection script
+│   └── tello_vision_control.py # Main FSM and PID flight controller
+├── simulation/
+│   └── tello_course.world      # Gazebo environment for testing
+├── package.xml                 # ROS 2 package metadata
+├── setup.py                    # Package installation and entry points
+└── setup.cfg                   # Configuration for setuptools
+
+
+
+
+
+
