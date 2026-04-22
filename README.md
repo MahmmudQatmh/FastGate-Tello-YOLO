@@ -16,8 +16,9 @@ https://github.com/user-attachments/assets/7d2087d7-d7cd-4d46-8dbb-fb4713091db5
 
 
 
-## 📁 Project Structure
-```text
+📁 Project Structure
+Plaintext
+
 my_tello_vision/
 ├── launch/             # ROS 2 Launch files
 ├── models/             # YOLOv8 weights (best.pt)
@@ -27,6 +28,29 @@ my_tello_vision/
 ├── package.xml         # Package metadata
 └── setup.py            # Entry points and dependencies
 
+It sounds like the formatting I provided got "trapped" inside a single large code block when you pasted it, which prevented the headings and tables from rendering correctly.
+
+To fix this, you need to paste the text directly as plain text into the GitHub editor, ensuring that only the technical parts (like the tree and the commands) are inside their own individual triple-backtick blocks.
+
+Here is the section-by-section breakdown. Copy and paste these sections one by one to ensure the formatting stays clean.
+Section 1: The Structure
+
+(Copy this exactly into your README)
+📁 Project Structure
+Plaintext
+
+my_tello_vision/
+├── launch/             # ROS 2 Launch files
+├── models/             # YOLOv8 weights (best.pt)
+├── my_tello_vision/    # Core Python Logic (FSM & PID)
+├── simulation/         # Gazebo .world and models
+├── Media/              # Flight recordings & demos
+├── package.xml         # Package metadata
+└── setup.py            # Entry points and dependencies
+
+Section 2: Installation
+
+(Copy this next)
 🛠️ Installation & Setup
 1. Prerequisites
 
@@ -40,7 +64,7 @@ pip install ultralytics opencv-python
 
 2. Workspace Setup
 
-Clone this repository into your ros2_ws/src folder. This repository includes the necessary driver directly for a seamless build.
+Clone this repository into your ros2_ws/src folder.
 Bash
 
 cd ~/ros2_ws/src
@@ -48,7 +72,7 @@ git clone https://github.com/MahmmudQatmh/FastGate-Tello-YOLO.git .
 
 3. Install the Tello Driver
 
-This project relies on the TIERS Tello ROS 2 Driver. Ensure all driver dependencies are met:
+This project relies on the TIERS Tello ROS 2 Driver:
 Bash
 
 sudo apt install libh264-decoder-dev
@@ -56,11 +80,12 @@ cd ~/ros2_ws
 colcon build --packages-select tello_msg tello_driver my_tello_vision
 source install/setup.bash
 
+
 🚀 Running the Mission
 
 Follow these steps in order (each in a new terminal):
 
-Step 1: Connect to Drone Wi-Fi Power on the DJI Tello and connect your Alienware to the drone's Wi-Fi access point.
+Step 1: Connect to Drone Wi-Fi Power on the DJI Tello and connect your computer to the drone's Wi-Fi.
 
 Step 2: Launch the Driver
 Bash
