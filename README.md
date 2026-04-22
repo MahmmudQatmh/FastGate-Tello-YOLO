@@ -18,9 +18,8 @@ https://github.com/user-attachments/assets/7d2087d7-d7cd-4d46-8dbb-fb4713091db5
 
 
 
-📁 Project Structure
-Plaintext
-
+## 📁 Project Structure
+```text
 my_tello_vision/
 ├── launch/             # ROS 2 Launch files
 ├── models/             # YOLOv8 weights (best.pt)
@@ -39,14 +38,13 @@ my_tello_vision/
     Ubuntu 22.04 with ROS 2 Humble installed.
 
     Python Dependencies:
-    Bash
 
-    pip install ultralytics opencv-python
+pip install ultralytics opencv-python
 
 2. Workspace Setup
 
 Clone this repository into your ros2_ws/src folder. This repository includes the necessary driver as a submodule/folder for convenience.
-Bash
+
 
 cd ~/ros2_ws/src
 git clone https://github.com/MahmmudQatmh/FastGate-Tello-YOLO.git .
@@ -56,9 +54,8 @@ git clone https://github.com/MahmmudQatmh/FastGate-Tello-YOLO.git .
 
 This project relies on the TIERS Tello ROS 2 Driver. Ensure all driver dependencies (like h264_decoder) are met:
 
-Bash
 
-sudo apt install libh264-decoder-dev # Example dependency
+sudo apt install libh264-decoder-dev
 cd ~/ros2_ws
 colcon build --packages-select tello_msg tello_driver my_tello_vision
 source install/setup.bash
@@ -72,19 +69,13 @@ Step 1: Connect to Drone Wi-Fi Power on the DJI Tello and connect your computer 
 
 Step 2: Launch the Driver
 
-Bash
-
 ros2 launch tello_driver tello_driver_launch.py
 
 Step 3: Start the Mission Recorder (Optional)
 
-Bash
-
 ros2 run my_tello_vision record_tello
 
 Step 4: Execute Autonomous Flight
-
-Bash
 
 ros2 run my_tello_vision tello_vision_control
 
@@ -116,6 +107,6 @@ PID Tuning & Correction
     Aggressive Search: Hard-coded 60-80° rotations after specific gates to minimize search time.
 
 📊 Model Performance
-Class	Accuracy	Inference Speed
-Gate	99.4%	7ms
-Stop Sign	99.0%	7ms
+Class,Accuracy,Inference Speed
+Gate,99.4%,7ms
+Stop Sign,99.0%,7ms
