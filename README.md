@@ -71,34 +71,36 @@ ros2 run my_tello_vision record_tello
 Step 4: Execute Autonomous Flight
 ```bash
 ros2 run my_tello_vision tello_vision_control
+
+
 ```
-🧠 Navigation Logic
-Finite State Machine (FSM)
+## 🧠 Navigation Logic
 
-The drone operates using a 6-state control architecture:
+### Finite State Machine (FSM)
 
-SEARCH
-360° scan for the gate, including blind maneuvers for difficult angles
-ALIGN
-PID controller centers the drone relative to the detected gate
-PENETRATE
-Aggressive forward motion to pass through the gate
-BRAKE
-Immediate backward correction to stabilize
-LAND
-Precision landing triggered by stop sign detection
-RECOVERY
-Failsafe mode when the target is lost
-PID Tuning & Corrections
-Camera Offset Compensation
-Adjusts for non-centered Tello camera
-Tilt Compensation
-Dynamically shifts target center based on forward velocity
-Aggressive Search Strategy
-Predefined 60–80° rotations to reduce search time
+The drone operates on a 6-state logic system to ensure robust flight:
 
+  1. **SEARCH**: 360° scan for the gate. Includes "Blind Maneuvering" for difficult angles.
+
+  2. **ALIGN**: PID control centers the drone on the target while managing camera/tilt offsets.
+
+  3. **PENETRATE**: An aggressive forward burst to clear the gate area quickly.
+
+  4. **BRAKE**: Immediate backward thrust to stabilize before the next search.
+
+  5. **LAND**: Precision approach triggered upon detecting the Stop Sign.
+
+  6. **RECOVERY**: Failsafe state to maintain last known trajectory if target is lost.
+
+### PID Tuning & Correction
+
+  1. **Camera Offset**: Compensates for the Tello's non-centered lens.
+
+  2. **Tilt Compensation**: Dynamically adjusts the target "center" based on forward velocity (fvel​).
+
+  3. **Aggressive Search**: Hard-coded 60-80° rotations after specific gates to minimize search time.
 
 📊 Model Performance
 Class	Accuracy	Inference Speed
-Gate	99.4%	7 ms
-Stop Sign	99.0%	7 ms
+Gate	99.4%	7ms
+Stop Sign	99.0%	7ms
