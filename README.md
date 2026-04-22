@@ -1,14 +1,20 @@
-🛸 FastGate: Autonomous Tello Navigation
+# 🛸 FastGate: Autonomous Tello Navigation
+**Aerial Robotics & Multi-Robot Systems | Spring 2026**
 
-Aerial Robotics & Multi-Robot Systems | Spring 2026
+An autonomous mission utilizing a **DJI Tello** drone and **YOLOv8** to navigate a 4-gate course with a precision landing.
 
-An autonomous mission utilizing a DJI Tello drone and YOLOv8 to navigate a 4-gate course with a precision landing on a stop sign.
+---
 
-    [!IMPORTANT]
-    Performance: Achieved a best time of 45 seconds (Target: <50s).
-    Detection: Inference speed of 7ms (~140 FPS) with 99% accuracy.
-
-📺 Mission Demo
+## 📁 Project Structure
+```text
+my_tello_vision/
+├── launch/             # ROS 2 Launch files
+├── models/             # YOLOv8 weights (best.pt)
+├── my_tello_vision/    # Core Python Logic (FSM & PID)
+├── simulation/         # Gazebo .world and models
+├── Media/              # Flight recordings & demos
+├── package.xml         # Package metadata
+└── setup.py            # Entry points and dependencies
 
 
 
@@ -16,51 +22,14 @@ https://github.com/user-attachments/assets/7d2087d7-d7cd-4d46-8dbb-fb4713091db5
 
 
 
-📁 Project Structure
-Plaintext
 
-my_tello_vision/
-├── launch/             # ROS 2 Launch files
-├── models/             # YOLOv8 weights (best.pt)
-├── my_tello_vision/    # Core Python Logic (FSM & PID)
-├── simulation/         # Gazebo .world and models
-├── Media/              # Flight recordings & demos
-├── package.xml         # Package metadata
-└── setup.py            # Entry points and dependencies
 
-It sounds like the formatting I provided got "trapped" inside a single large code block when you pasted it, which prevented the headings and tables from rendering correctly.
-
-To fix this, you need to paste the text directly as plain text into the GitHub editor, ensuring that only the technical parts (like the tree and the commands) are inside their own individual triple-backtick blocks.
-
-Here is the section-by-section breakdown. Copy and paste these sections one by one to ensure the formatting stays clean.
-Section 1: The Structure
-
-(Copy this exactly into your README)
-📁 Project Structure
-Plaintext
-
-my_tello_vision/
-├── launch/             # ROS 2 Launch files
-├── models/             # YOLOv8 weights (best.pt)
-├── my_tello_vision/    # Core Python Logic (FSM & PID)
-├── simulation/         # Gazebo .world and models
-├── Media/              # Flight recordings & demos
-├── package.xml         # Package metadata
-└── setup.py            # Entry points and dependencies
-
-Section 2: Installation
-
-(Copy this next)
 🛠️ Installation & Setup
 1. Prerequisites
 
-    Ubuntu 22.04 with ROS 2 Humble installed.
+    OS: Ubuntu 22.04 (ROS 2 Humble)
 
-    Python Dependencies:
-
-Bash
-
-pip install ultralytics opencv-python
+    Python: pip install ultralytics opencv-python
 
 2. Workspace Setup
 
