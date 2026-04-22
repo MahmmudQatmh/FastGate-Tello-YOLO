@@ -5,6 +5,11 @@ An autonomous mission utilizing a **DJI Tello** drone and **YOLOv8** to navigate
 
 ---
 
+## 🎥 Demo
+https://github.com/user-attachments/assets/7d2087d7-d7cd-4d46-8dbb-fb4713091db5
+
+---
+
 ## 📁 Project Structure
 ```text
 my_tello_vision/
@@ -18,85 +23,81 @@ my_tello_vision/
 
 
 
-https://github.com/user-attachments/assets/7d2087d7-d7cd-4d46-8dbb-fb4713091db5
-
-
-
 
 
 🛠️ Installation & Setup
 1. Prerequisites
-
-    OS: Ubuntu 22.04 (ROS 2 Humble)
-
-    Python: pip install ultralytics opencv-python
+OS: Ubuntu 22.04 (ROS 2 Humble)
+Python packages:
+```bash
+pip install ultralytics opencv-python
 
 2. Workspace Setup
 
-Clone this repository into your ros2_ws/src folder.
-Bash
-
+Clone the repository into your ROS 2 workspace:
+```bash
 cd ~/ros2_ws/src
-git clone https://github.com/MahmmudQatmh/FastGate-Tello-YOLO.git .
+git clone https://github.com/MahmmudQatmh/FastGate-Tello-YOLO.git
 
-3. Install the Tello Driver
+3. Install Tello Driver
 
-This project relies on the TIERS Tello ROS 2 Driver:
-Bash
-
+This project depends on the TIERS Tello ROS 2 Driver:
+```bash
 sudo apt install libh264-decoder-dev
+```bash
 cd ~/ros2_ws
 colcon build --packages-select tello_msg tello_driver my_tello_vision
+
 source install/setup.bash
 
 
 🚀 Running the Mission
 
-Follow these steps in order (each in a new terminal):
+⚠️ Open a new terminal for each step
 
-Step 1: Connect to Drone Wi-Fi Power on the DJI Tello and connect your computer to the drone's Wi-Fi.
+Step 1: Connect to Drone Wi-Fi
+Power on the DJI Tello
+Connect your PC to the drone’s Wi-Fi network
 
 Step 2: Launch the Driver
-Bash
-
+```bash
 ros2 launch tello_driver tello_driver_launch.py
 
 Step 3: Start the Mission Recorder (Optional)
-Bash
-
+```bash
 ros2 run my_tello_vision record_tello
 
 Step 4: Execute Autonomous Flight
-Bash
-
+```bash
 ros2 run my_tello_vision tello_vision_control
 
 🧠 Navigation Logic
 Finite State Machine (FSM)
 
-The drone operates on a 6-state logic system to ensure robust flight:
+The drone operates using a 6-state control architecture:
 
-    SEARCH: 360° scan for the gate. Includes "Blind Maneuvering" for difficult angles.
+SEARCH
+360° scan for the gate, including blind maneuvers for difficult angles
+ALIGN
+PID controller centers the drone relative to the detected gate
+PENETRATE
+Aggressive forward motion to pass through the gate
+BRAKE
+Immediate backward correction to stabilize
+LAND
+Precision landing triggered by stop sign detection
+RECOVERY
+Failsafe mode when the target is lost
+PID Tuning & Corrections
+Camera Offset Compensation
+Adjusts for non-centered Tello camera
+Tilt Compensation
+Dynamically shifts target center based on forward velocity
+Aggressive Search Strategy
+Predefined 60–80° rotations to reduce search time
 
-    ALIGN: PID control centers the drone on the target while managing camera/tilt offsets.
-
-    PENETRATE: An aggressive forward burst to clear the gate area quickly.
-
-    BRAKE: Immediate backward thrust to stabilize before the next search.
-
-    LAND: Precision approach triggered upon detecting the Stop Sign.
-
-    RECOVERY: Failsafe state to maintain last known trajectory if target is lost.
-
-PID Tuning & Correction
-
-    Camera Offset: Compensates for the Tello's non-centered lens.
-
-    Tilt Compensation: Dynamically adjusts the target "center" based on forward velocity (fvel​).
-
-    Aggressive Search: Hard-coded 60-80° rotations after specific gates to minimize search time.
 
 📊 Model Performance
 Class	Accuracy	Inference Speed
-Gate	99.4%	7ms
-Stop Sign	99.0%	7ms
+Gate	99.4%	7 ms
+Stop Sign	99.0%	7 ms
