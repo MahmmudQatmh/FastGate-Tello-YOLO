@@ -80,27 +80,43 @@ ros2 run my_tello_vision tello_vision_control
 
 The drone operates on a 6-state logic system to ensure robust flight:
 
-  1. **SEARCH**: 360° scan for the gate. Includes "Blind Maneuvering" for difficult angles.
+    1. **SEARCH**: 360° scan for the gate. Includes "Blind Maneuvering" for difficult angles.
 
-  2. **ALIGN**: PID control centers the drone on the target while managing camera/tilt offsets.
+    2. **ALIGN**: PID control centers the drone on the target while managing camera/tilt offsets.
 
-  3. **PENETRATE**: An aggressive forward burst to clear the gate area quickly.
+    3. **PENETRATE**: An aggressive forward burst to clear the gate area quickly.
 
-  4. **BRAKE**: Immediate backward thrust to stabilize before the next search.
+    4. **BRAKE**: Immediate backward thrust to stabilize before the next search.
 
-  5. **LAND**: Precision approach triggered upon detecting the Stop Sign.
+    5. **LAND**: Precision approach triggered upon detecting the Stop Sign.
 
-  6. **RECOVERY**: Failsafe state to maintain last known trajectory if target is lost.
+    6. **RECOVERY**: Failsafe state to maintain last known trajectory if target is lost.
 
 ### PID Tuning & Correction
 
-  1. **Camera Offset**: Compensates for the Tello's non-centered lens.
+    1. **Camera Offset**: Compensates for the Tello's non-centered lens.
 
-  2. **Tilt Compensation**: Dynamically adjusts the target "center" based on forward velocity (fvel​).
+    2. **Tilt Compensation**: Dynamically adjusts the target "center" based on forward velocity (fvel​).
 
-  3. **Aggressive Search**: Hard-coded 60-80° rotations after specific gates to minimize search time.
+    3. **Aggressive Search**: Hard-coded 60-80° rotations after specific gates to minimize search time.
 
-📊 Model Performance
-Class	Accuracy	Inference Speed
-Gate	99.4%	7ms
-Stop Sign	99.0%	7ms
+
+## 📊 Model Performance
+
+Real-time detection performance of the YOLOv8 model:
+
+| Class      | Accuracy (%) | Inference Time (ms) |
+|:-----------|:------------:|:-------------------:|
+| Gate       | 99.4         | 7                   |
+| Stop Sign  | 99.0         | 7                   |
+
+
+
+
+
+
+
+https://github.com/user-attachments/assets/1d728bf9-6e44-4a3b-89b3-14ebaf8c18ff
+
+
+
