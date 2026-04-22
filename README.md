@@ -20,7 +20,7 @@ my_tello_vision/
 ├── Media/              # Flight recordings & demos
 ├── package.xml         # Package metadata
 └── setup.py            # Entry points and dependencies
-
+```
 
 
 
@@ -31,23 +31,24 @@ OS: Ubuntu 22.04 (ROS 2 Humble)
 Python packages:
 ```bash
 pip install ultralytics opencv-python
-
+```
 2. Workspace Setup
 
 Clone the repository into your ROS 2 workspace:
 ```bash
 cd ~/ros2_ws/src
 git clone https://github.com/MahmmudQatmh/FastGate-Tello-YOLO.git
-
+```
 3. Install Tello Driver
 
 This project depends on the TIERS Tello ROS 2 Driver:
 ```bash
 sudo apt install libh264-decoder-dev
+```
 ```bash
 cd ~/ros2_ws
 colcon build --packages-select tello_msg tello_driver my_tello_vision
-
+```
 source install/setup.bash
 
 
@@ -62,15 +63,15 @@ Connect your PC to the drone’s Wi-Fi network
 Step 2: Launch the Driver
 ```bash
 ros2 launch tello_driver tello_driver_launch.py
-
+```
 Step 3: Start the Mission Recorder (Optional)
 ```bash
 ros2 run my_tello_vision record_tello
-
+```
 Step 4: Execute Autonomous Flight
 ```bash
 ros2 run my_tello_vision tello_vision_control
-
+```
 🧠 Navigation Logic
 Finite State Machine (FSM)
 
